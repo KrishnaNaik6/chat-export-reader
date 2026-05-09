@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+#root {
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -30,7 +34,8 @@ html {
 }
 
 body {
-  overflow: hidden;
+  /* overflow: hidden; */
+  overscroll-behavior: none;
 }
 
 ::selection {

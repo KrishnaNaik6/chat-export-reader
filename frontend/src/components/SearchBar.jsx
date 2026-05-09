@@ -18,15 +18,18 @@ export default function SearchBar({
               setSearch(e.target.value)
             }
             className="
-              w-full
-              bg-[#111b21]
-              text-white
-              px-12
-              py-3
-              rounded-full
-              outline-none
-              placeholder-gray-400
-            "
+    w-full
+    bg-[#111b21]
+    text-white
+    px-10
+    py-2.5
+    sm:py-3
+    rounded-full
+    outline-none
+    placeholder-gray-400
+   text-xs sm:text-sm
+    sm:text-base
+  "
           />
 
           <div
@@ -42,7 +45,7 @@ export default function SearchBar({
         </div>
 
         {/* RESULT COUNT */}
-        <div className="text-gray-300 text-sm">
+        <div className="text-gray-300text-xs sm:text-sm">
           {totalMatches > 0
             ? `${currentMatch + 1}/${totalMatches}`
             : "0/0"}
@@ -52,12 +55,14 @@ export default function SearchBar({
         <button
           onClick={goToPrevious}
           className="
-            bg-[#111b21]
-            text-white
-            px-3
-            py-2
-            rounded-lg
-          "
+  bg-[#111b21]
+  text-white
+  px-2
+  sm:px-3
+  py-2
+  rounded-lg
+ text-xs sm:text-sm
+"
         >
           ↑
         </button>
@@ -66,12 +71,14 @@ export default function SearchBar({
         <button
           onClick={goToNext}
           className="
-            bg-[#111b21]
-            text-white
-            px-3
-            py-2
-            rounded-lg
-          "
+  bg-[#111b21]
+  text-white
+  px-2
+  sm:px-3
+  py-2
+  rounded-lg
+ text-xs sm:text-sm
+"
         >
           ↓
         </button>

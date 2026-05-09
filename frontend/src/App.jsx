@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 
 import { useDebounce } from "use-debounce";
 
@@ -17,6 +17,8 @@ export default function App() {
   const [myName, setMyName] = useState("");
 
   const [search, setSearch] = useState("");
+
+  const chatRef = useRef(null);
 
   // DEBOUNCE SEARCH
   const [debouncedSearch] =
@@ -92,64 +94,91 @@ export default function App() {
   };
 
   return (
-    <div className="h-screen flex flex-col bg-[#0b141a] overflow-hidden">
-      <Header />
+    <div
+      className="
+    h-screen
+    flex
+    flex-col
+    bg-[#0b141a]
+    overflow-hidden
+  "
+    >
+      <div
+        className="
+    w-full
+    h-full
+    md:max-w-5xl
+    mx-auto
+    flex
+    flex-col
+    bg-[#111b21]
+    shadow-2xl
+  "
+      >
+        <Header />
 
-      <UploadBox onFileRead={handleFileRead} />
+        <UploadBox onFileRead={handleFileRead} />
 
-      {/* SELECT USER */}
-      {senders.length > 0 && (
-        <div className="p-3 bg-[#111b21] border-b border-gray-700">
-          <select
-            value={myName}
-            onChange={(e) =>
-              setMyName(e.target.value)
-            }
-            className="
-              w-full
-              bg-[#202c33]
-              text-white
-              p-3
-              rounded-xl
-              outline-none
-            "
-          >
-            <option value="">
-              Select Yourself
-            </option>
-
-            {senders.map((sender) => (
-              <option
-                key={sender}
-                value={sender}
-              >
-                {sender}
+        {/* SELECT USER */}
+        {senders.length > 0 && (
+          <div className="p-3 bg-[#111b21] border-b border-gray-700">
+            <select
+              value={myName}
+              onChange={(e) =>
+                setMyName(e.target.value)
+              }
+              className="
+  w-full
+  bg-[#202c33]
+  text-white
+  p-2.5
+  sm:p-3
+  rounded-xl
+  outline-none
+  text-sm
+  sm:text-base
+"
+            >
+              <option value="">
+                Select Yourself
               </option>
-            ))}
-          </select>
-        </div>
-      )}
 
-      {/* SEARCH */}
-      <SearchBar
-        search={search}
-        setSearch={setSearch}
-        goToNext={goToNext}
-        goToPrevious={goToPrevious}
-        currentMatch={currentMatch}
-        totalMatches={matchedIndexes.length}
-      />
+              {senders.map((sender) => (
+                <option
+                  key={sender}
+                  value={sender}
+                >
+                  {sender}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
 
-      {/* CHAT */}
-      <ChatWindow
-        messages={messages}
-        myName={myName}
-        matchedIndexes={matchedIndexes}
-        matchedSet={matchedSet}
-        currentMatch={currentMatch}
-        search={search}
-      />
-      <ScrollBottomButton />
+        {/* SEARCH */}
+        <SearchBar
+          search={search}
+          setSearch={setSearch}
+          goToNext={goToNext}
+          goToPrevious={goToPrevious}
+          currentMatch={currentMatch}
+          totalMatches={matchedIndexes.length}
+        />
+
+        {/* CHAT */}
+        <ChatWindow
+          ref={chatRef}
+          messages={messages}
+          myName={myName}
+          matchedIndexes={matchedIndexes}
+          matchedSet={matchedSet}
+          currentMatch={currentMatch}
+          search={search}
+        />
+        <ScrollBottomButton
+          chatRef={chatRef}
+        />
+      </div>
     </div>
 
   );

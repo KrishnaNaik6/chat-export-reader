@@ -17,22 +17,26 @@ export default function UploadBox({ onFileRead }) {
     <div className="p-4 bg-[#111b21] border-b border-gray-700">
       <label
         className="
-          flex
-          items-center
-          justify-center
-          gap-3
-          bg-[#202c33]
-          hover:bg-[#2a3942]
-          text-white
-          py-4
-          rounded-2xl
-          cursor-pointer
-          transition-all
-          duration-300
-          border
-          border-dashed
-          border-green-500
-        "
+  flex
+  items-center
+  justify-center
+  gap-2
+  sm:gap-3
+  bg-[#202c33]
+  hover:bg-[#2a3942]
+  text-white
+  py-3
+  sm:py-4
+  rounded-2xl
+  cursor-pointer
+  transition-all
+  duration-300
+  border
+  border-dashed
+  border-green-500
+  text-sm
+  sm:text-base
+"
       >
         <span className="text-2xl">📂</span>
 

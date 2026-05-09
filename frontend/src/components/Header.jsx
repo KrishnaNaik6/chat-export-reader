@@ -3,14 +3,15 @@ export default function Header() {
     <div
       className="
         bg-[#202c33]
-        px-5
-        py-4
+        px-3
+        sm:px-5
+        py-3
         flex
         items-center
         justify-between
-        shadow-md
         border-b
         border-gray-700
+        shrink-0
       "
     >
       <div className="flex items-center gap-3">
@@ -23,18 +24,32 @@ export default function Header() {
             flex
             items-center
             justify-center
-            text-xl
+            text-lg
+            sm:text-xl
           "
         >
           💬
         </div>
 
         <div>
-          <h1 className="text-white font-bold text-lg">
+          <h1
+            className="
+              text-white
+              font-bold
+             text-xs sm:text-sm
+              sm:text-lg
+            "
+          >
             WhatsApp Chat Reader
           </h1>
 
-          <p className="text-gray-400 text-sm">
+          <p
+            className="
+              text-gray-400
+              text-xs
+              sm:text-sm
+            "
+          >
             Import & Read Chats
           </p>
         </div>

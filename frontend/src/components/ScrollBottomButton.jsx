@@ -1,30 +1,37 @@
 import { FaArrowDown } from "react-icons/fa";
 
-export default function ScrollBottomButton() {
-    const scrollToBottom = () => {
-        window.scrollTo({
-            top: document.body.scrollHeight,
-            behavior: "smooth",
-        });
-    };
+export default function ScrollBottomButton({
+  chatRef,
+}) {
+  const scrollToBottom = () => {
+    if (chatRef?.current) {
+      chatRef.current.scrollTo({
+        top: chatRef.current.scrollHeight,
+        behavior: "smooth",
+      });
+    }
+  };
 
-    return (
-        <button
-            onClick={scrollToBottom}
-            className="
+  return (
+    <button
+      onClick={scrollToBottom}
+      className="
         fixed
-        bottom-6
-        right-6
+        bottom-5
+        right-5
         bg-green-500
         hover:bg-green-600
         text-white
-        p-4
+        p-3
+        sm:p-4
         rounded-full
         shadow-lg
         transition-all
+        duration-300
+        z-50
       "
-        >
-            <FaArrowDown />
-        </button>
-    );
+    >
+      <FaArrowDown />
+    </button>
+  );
 }
